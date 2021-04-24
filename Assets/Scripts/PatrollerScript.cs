@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class PatrollerScript : MonoBehaviour
     public GameObject rightPOV;
     public GameObject leftPOV;
     public GameObject downPOV;
+    public bool spottedPlayer = false;
 
     private Vector3 Destination;
     private bool Forwards = true;
@@ -41,38 +43,47 @@ public class PatrollerScript : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position,
                 this.Destination, this.Speed * Time.deltaTime);
 
-            if (this.Destination.x - transform.position.x > 0)
+            float xDifference = this.Destination.x - transform.position.x;
+            float yDifference = this.Destination.y - transform.position.y;
+
+            if (Math.Abs(xDifference) > Math.Abs(yDifference))
             {
-                rightPOV.gameObject.transform.position = this.transform.position;
-                rightPOV.gameObject.SetActive(true);
-                leftPOV.gameObject.SetActive(false);
-                upPOV.gameObject.SetActive(false);
-                downPOV.gameObject.SetActive(false);
+                if (xDifference > 0)
+                {
+                    rightPOV.gameObject.transform.position = new Vector3(this.transform.position.x + 0.5f, this.transform.position.y, 0);
+                    rightPOV.gameObject.SetActive(true);
+                    leftPOV.gameObject.SetActive(false);
+                    upPOV.gameObject.SetActive(false);
+                    downPOV.gameObject.SetActive(false);
+                }
+                else
+                {
+                    leftPOV.gameObject.transform.position = new Vector3(this.transform.position.x - 0.5f, this.transform.position.y, 0);
+                    leftPOV.gameObject.SetActive(true);
+                    rightPOV.gameObject.SetActive(false);
+                    upPOV.gameObject.SetActive(false);
+                    downPOV.gameObject.SetActive(false);
+                }
             }
-            else if (this.Destination.x - transform.position.x <= 0)
+            else
             {
-                leftPOV.gameObject.transform.position = this.transform.position;
-                leftPOV.gameObject.SetActive(true);
-                rightPOV.gameObject.SetActive(false);
-                upPOV.gameObject.SetActive(false);
-                downPOV.gameObject.SetActive(false);
+                if (yDifference > 0)
+                {
+                    upPOV.gameObject.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1.0f, 0);
+                    upPOV.gameObject.SetActive(true);
+                    leftPOV.gameObject.SetActive(false);
+                    rightPOV.gameObject.SetActive(false);
+                    downPOV.gameObject.SetActive(false);
+                }
+                else
+                {
+                    downPOV.gameObject.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 1.0f, 0);
+                    downPOV.gameObject.SetActive(true);
+                    leftPOV.gameObject.SetActive(false);
+                    upPOV.gameObject.SetActive(false);
+                    rightPOV.gameObject.SetActive(false);
+                }
             }
-            //else if (this.Destination.y - transform.position.y > 0)
-            //{
-            //    upPOV.gameObject.transform.position = this.transform.position;
-            //    upPOV.gameObject.SetActive(true);
-            //    leftPOV.gameObject.SetActive(false);
-            //    rightPOV.gameObject.SetActive(false);
-            //    downPOV.gameObject.SetActive(false);
-            //}
-            //else if (this.Destination.y - transform.position.y <= 0)
-            //{
-            //    downPOV.gameObject.transform.position = this.transform.position;
-            //    downPOV.gameObject.SetActive(true);
-            //    leftPOV.gameObject.SetActive(false);
-            //    upPOV.gameObject.SetActive(false);
-            //    rightPOV.gameObject.SetActive(false);
-            //}
 
             yield return null;
         }
