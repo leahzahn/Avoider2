@@ -22,7 +22,7 @@ public class VisionController : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
-            
+            //patroller.spottedPlayer = true;
         }
     }
 }
