@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     float doubleClickTimer = 0.0f;
     bool hasKey = false;
     bool speedDoubled = false;
+    Vector3 mouseInSpace;
 
     // Start is called before the first frame update
     void Start()
@@ -28,25 +29,25 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        Vector3 mouseInSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseInSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0))
         {
             //StopAllCoroutines();
+            //StartCoroutine(OnDoubleClick());
             StopCoroutine(Click());
             StopCoroutine(MoveTo(transform.position, mouseInSpace, speed));
 
             mouseInSpace = new Vector3(mouseInSpace.x, mouseInSpace.y, 0);
 
-            if ((timer > 0.0f) && !doubleClick)
+            if ((timer > 0.0f) && !doubleClick && !speedDoubled)
             {
-                Debug.Log("dash");
+                Debug.Log("dashing");
                 doubleClick = true;
-                speed *= 2;
                 //if (!speedDoubled)
                 //{
-                //    speed *= 2;
-                //    speedDoubled = true;
+                speed *= 2;
+                speedDoubled = true;
                 //}
                 StartCoroutine(OnDoubleClick());
 
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
             else
                 doubleClick = false;
 
-            
+
             StartCoroutine(Click());
 
             StartCoroutine(MoveTo(transform.position, mouseInSpace, speed));
@@ -67,20 +68,20 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator OnDoubleClick()
     {
-        //speed *= 2;
-        while (doubleClickTimer < 5.0f)
+        while (doubleClickTimer < 1.5f)
         {
             doubleClickTimer += Time.deltaTime;
-            Debug.Log(doubleClickTimer + ", " + doubleClick);
+            //Debug.Log(doubleClickTimer + ", " + doubleClick);
             doubleClick = true;
+            speedDoubled = true;
             yield return null;
         }
 
-        if (doubleClickTimer >= 5.0f)
+        if (doubleClickTimer >= 1.5f)
         {
-            Debug.Log("in reset speed if");
+            Debug.Log("in reset speed");
             speed /= 2;
-            //speedDoubled = false;
+            speedDoubled = false;
             doubleClickTimer = 0.0f;
             doubleClick = false;
         }
@@ -119,13 +120,22 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        StopAllCoroutines();
+        //StopAllCoroutines();
 
         //Debug.Log("collision w/ " + collision.gameObject.layer);
 
         if (collision.gameObject.layer == 10) //wall
         {
             StopAllCoroutines();
+            if (speedDoubled)
+            {
+                speed /= 2;
+                doubleClick = false;
+                speedDoubled = false;
+            }
+            animator.SetBool("isRunning", false);
+            //StopCoroutine(Click());
+            //StopCoroutine(MoveTo(transform.position, mouseInSpace, speed));
         }
         else if (collision.gameObject.layer == 11) //door
         {
@@ -141,6 +151,7 @@ public class PlayerController : MonoBehaviour
         else if (collision.gameObject.layer == 9) //enemy
         {
             this.transform.position = startPoint.transform.position;
+            StopAllCoroutines();
         }
         else if (collision.gameObject.layer == 12) // key
         {
