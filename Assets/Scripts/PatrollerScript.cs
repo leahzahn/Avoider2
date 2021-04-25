@@ -32,6 +32,12 @@ public class PatrollerScript : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(MoveTo());
 
+        if (spottedPlayer)
+        {
+            this.Destination = player.transform.position;
+            StopAllCoroutines();
+            StartCoroutine(MoveTo());
+        }
 
         //if ((transform.position - this.Destination).sqrMagnitude > 1.30f)
     }
@@ -40,6 +46,10 @@ public class PatrollerScript : MonoBehaviour
     {
         while ((transform.position - this.Destination).sqrMagnitude >  0.01f)
         {
+            if (spottedPlayer)
+            {
+                this.Destination = player.transform.position;
+            }
             transform.position = Vector2.MoveTowards(transform.position,
                 this.Destination, this.Speed * Time.deltaTime);
 
@@ -50,7 +60,7 @@ public class PatrollerScript : MonoBehaviour
             {
                 if (xDifference > 0)
                 {
-                    rightPOV.gameObject.transform.position = new Vector3(this.transform.position.x + 0.5f, this.transform.position.y, 0);
+                    rightPOV.gameObject.transform.position = new Vector3(this.transform.position.x + 0.75f, this.transform.position.y, 0);
                     rightPOV.gameObject.SetActive(true);
                     leftPOV.gameObject.SetActive(false);
                     upPOV.gameObject.SetActive(false);
@@ -58,7 +68,7 @@ public class PatrollerScript : MonoBehaviour
                 }
                 else
                 {
-                    leftPOV.gameObject.transform.position = new Vector3(this.transform.position.x - 0.5f, this.transform.position.y, 0);
+                    leftPOV.gameObject.transform.position = new Vector3(this.transform.position.x - 0.75f, this.transform.position.y, 0);
                     leftPOV.gameObject.SetActive(true);
                     rightPOV.gameObject.SetActive(false);
                     upPOV.gameObject.SetActive(false);
@@ -69,7 +79,7 @@ public class PatrollerScript : MonoBehaviour
             {
                 if (yDifference > 0)
                 {
-                    upPOV.gameObject.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1.0f, 0);
+                    upPOV.gameObject.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1.25f, 0);
                     upPOV.gameObject.SetActive(true);
                     leftPOV.gameObject.SetActive(false);
                     rightPOV.gameObject.SetActive(false);
@@ -77,7 +87,7 @@ public class PatrollerScript : MonoBehaviour
                 }
                 else
                 {
-                    downPOV.gameObject.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 1.0f, 0);
+                    downPOV.gameObject.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 1.25f, 0);
                     downPOV.gameObject.SetActive(true);
                     leftPOV.gameObject.SetActive(false);
                     upPOV.gameObject.SetActive(false);
@@ -131,5 +141,14 @@ public class PatrollerScript : MonoBehaviour
             DestinationWaypoint = 0;
 
         this.Destination = this.Waypoints[DestinationWaypoint].transform.position;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 8)
+        {
+            this.transform.position = this.Waypoints[DestinationWaypoint].transform.position;
+            spottedPlayer = false;
+        }
     }
 }

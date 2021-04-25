@@ -6,6 +6,7 @@ public class ButtonController : MonoBehaviour
 {
     public GameObject player;
     public GameObject gameQuitButton;
+    public GameObject keyText;
     public GameObject playButton;
     public GameObject menuQuitButton;
     public GameObject menuBackground;
@@ -19,6 +20,7 @@ public class ButtonController : MonoBehaviour
         menuBackground.gameObject.SetActive(true);
         player.gameObject.SetActive(false);
         gameQuitButton.gameObject.SetActive(false);
+        keyText.gameObject.SetActive(false);
     }
 
     public void OnPlayButtonClick()
@@ -29,6 +31,7 @@ public class ButtonController : MonoBehaviour
         menuBackground.gameObject.SetActive(false);
         player.gameObject.SetActive(true);
         gameQuitButton.gameObject.SetActive(true);
+        keyText.gameObject.SetActive(true);
     }
 
     public void OnMenuQuitButtonClick()
@@ -45,5 +48,6 @@ public class ButtonController : MonoBehaviour
         menuBackground.gameObject.SetActive(true);
         player.gameObject.SetActive(false);
         gameQuitButton.gameObject.SetActive(false);
+        keyText.gameObject.SetActive(false);
     }
 }

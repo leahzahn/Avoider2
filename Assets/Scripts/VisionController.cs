@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VisionController : MonoBehaviour
 {
-    public GameObject patroller;
+    public PatrollerScript patroller;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class VisionController : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
-            //patroller.spottedPlayer = true;
+            patroller.spottedPlayer = true;
         }
     }
 }
