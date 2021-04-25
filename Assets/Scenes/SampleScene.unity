@@ -1729,15 +1729,6 @@ Tilemap:
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
-  - first: {x: -10, y: -8, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 6
-      m_TileSpriteIndex: 6
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1073741825
   - first: {x: -7, y: -8, z: 0}
     second:
       serializedVersion: 2
@@ -1975,8 +1966,8 @@ Tilemap:
   - first: {x: -10, y: -7, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 7
-      m_TileSpriteIndex: 2
+      m_TileIndex: 6
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -5840,7 +5831,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 377ddcfcec46b08458a7bb7feb80f5c2, type: 2}
   - m_RefCount: 126
     m_Data: {fileID: 11400000, guid: 2aca5474aa3153e4f866a4ba0f2a17d9, type: 2}
-  - m_RefCount: 265
+  - m_RefCount: 264
     m_Data: {fileID: 11400000, guid: ee106b1a389b72944af275c281ccca18, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 2926d5d020b1ad44f9729bf39cc96877, type: 2}
@@ -5858,7 +5849,7 @@ Tilemap:
       type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 265
+  - m_RefCount: 264
     m_Data: {fileID: 3763410414103885016, guid: 6a478987cae5e2b468e89322698eadfd,
       type: 3}
   - m_RefCount: 0
@@ -5888,7 +5879,7 @@ Tilemap:
     m_Data: {fileID: 2036109230100284037, guid: 6a478987cae5e2b468e89322698eadfd,
       type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 564
+  - m_RefCount: 563
     m_Data:
       e00: 1
       e01: 0
@@ -5907,7 +5898,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 564
+  - m_RefCount: 563
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: 2.0487e-41, g: 2.0487e-41, b: 2.0487e-41, a: 2.0487e-41}
@@ -18935,8 +18926,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389488650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.65, y: -8.48, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.692, y: -8.66, z: 0}
+  m_LocalScale: {x: 0.91516495, y: 0.8198025, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3

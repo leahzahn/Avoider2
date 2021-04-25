@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour
                 speed /= 2;
                 doubleClick = false;
                 speedDoubled = false;
+                doubleClickTimer = 0.0f;
             }
             animator.SetBool("isRunning", false);
             //StopCoroutine(Click());
@@ -152,6 +153,14 @@ public class PlayerController : MonoBehaviour
         {
             this.transform.position = startPoint.transform.position;
             StopAllCoroutines();
+            if (speedDoubled)
+            {
+                speed /= 2;
+                doubleClick = false;
+                speedDoubled = false;
+                doubleClickTimer = 0.0f;
+            }
+            animator.SetBool("isRunning", false);
         }
         else if (collision.gameObject.layer == 12) // key
         {
