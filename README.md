@@ -15,7 +15,7 @@ PlayerController.cs
 VisionController.cs
 WaypointScript.cs
 
-Known errors: none
+Known errors: can dash through walls
 
 References: previous projects, class examples
 
