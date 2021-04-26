@@ -815,8 +815,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 390009339}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -211, y: -177.044, z: 0}
-  m_LocalScale: {x: 60.67027, y: 37.495853, z: 1}
+  m_LocalPosition: {x: -17.6, y: 7.5, z: 0}
+  m_LocalScale: {x: 190.0651, y: 154.17271, z: 1}
   m_Children: []
   m_Father: {fileID: 1049925478}
   m_RootOrder: 0
@@ -6294,7 +6294,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10.112603
+  orthographic size: 3.9047132
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6556,7 +6556,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &620637539
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18424,6 +18424,7 @@ MonoBehaviour:
   menuQuitButton: {fileID: 1356832519}
   menuBackground: {fileID: 390009339}
   titleText: {fileID: 91756370}
+  winText: {fileID: 620637538}
 --- !u!4 &914955941
 Transform:
   m_ObjectHideFlags: 0
@@ -19200,7 +19201,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 115, y: 0}
+  m_AnchoredPosition: {x: 92, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1356832521
@@ -19971,7 +19972,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -115, y: 0}
+  m_AnchoredPosition: {x: -92, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1561449840

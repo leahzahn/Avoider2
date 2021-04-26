@@ -1,4 +1,20 @@
-﻿using System;
+﻿//Leah Zahn
+//ID: 2341427
+//zahn @chapman.edu
+//CPSC236-03
+//Avoider
+//This is my own work, and I did not cheat on this assignment.
+
+/*
+ * PatrollerScript.cs
+ * This class controls a patroller. The patroller moves through its waypoints, and pauses 
+ * at any that are marked as sentry points. If it sees the player, it will chase the player, 
+ * and if it hits the player, will return the player to its starting point and the patroller 
+ * will move to its next waypoint.
+ * 
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -146,11 +162,5 @@ public class PatrollerScript : MonoBehaviour
             this.transform.position = this.Waypoints[DestinationWaypoint].transform.position;
             spottedPlayer = false;
         }
-        //else if (collision.gameObject.layer == 10)
-        //{
-        //    StopAllCoroutines();
-        //    this.transform.position = this.Waypoints[DestinationWaypoint].transform.position;
-        //    spottedPlayer = false;
-        //}
     }
 }

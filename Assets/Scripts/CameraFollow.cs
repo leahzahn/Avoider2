@@ -1,4 +1,19 @@
-﻿using System.Collections;
+﻿//Leah Zahn
+//ID: 2341427
+//zahn @chapman.edu
+//CPSC236-03
+//Avoider
+//This is my own work, and I did not cheat on this assignment.
+
+/*
+ * CameraFollow.cs
+ * This class tells the main camera to follow the player as they move around the map. 
+ * The camera is clamped at the borders so that it will not go beyond the map even 
+ * if the player is at the edge.
+ * 
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

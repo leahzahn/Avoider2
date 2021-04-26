@@ -1,4 +1,20 @@
-﻿using System.Collections;
+﻿//Leah Zahn
+//ID: 2341427
+//zahn @chapman.edu
+//CPSC236-03
+//Avoider
+//This is my own work, and I did not cheat on this assignment.
+
+/*
+ * PlayerController.cs
+ * This class controls the player. The player moves to the location of the last mouse click, 
+ * and can dash for 1.5 seconds upon double click. If the player collides with a patroller, 
+ * they are returned to their starting point. They can get the key and win the game by colliding 
+ * with the door if they have the key. 
+ * 
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

@@ -1,4 +1,18 @@
-﻿using System.Collections;
+﻿//Leah Zahn
+//ID: 2341427
+//zahn @chapman.edu
+//CPSC236-03
+//Avoider
+//This is my own work, and I did not cheat on this assignment.
+
+/*
+ * ButtonController.cs
+ * This class controls the buttons and text elements in the menu and during 
+ * the game so that the appropriate UI elements are shown at the correct times.
+ * 
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
