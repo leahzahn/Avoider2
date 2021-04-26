@@ -33,10 +33,13 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            //StopAllCoroutines();
-            //StartCoroutine(OnDoubleClick());
-            StopCoroutine(Click());
-            StopCoroutine(MoveTo(transform.position, mouseInSpace, speed));
+            StopAllCoroutines();
+            if (doubleClick)
+            {
+                StartCoroutine(OnDoubleClick());
+            }
+            //StopCoroutine(Click());
+            //StopCoroutine(MoveTo(transform.position, mouseInSpace, speed));
 
             mouseInSpace = new Vector3(mouseInSpace.x, mouseInSpace.y, 0);
 
@@ -44,11 +47,8 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("dashing");
                 doubleClick = true;
-                //if (!speedDoubled)
-                //{
                 speed *= 2;
                 speedDoubled = true;
-                //}
                 StartCoroutine(OnDoubleClick());
 
             }
@@ -61,9 +61,6 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(MoveTo(transform.position, mouseInSpace, speed));
 
         }
-
-        //if (speedDoubled)
-        //    speedDoubled = false;
     }
 
     IEnumerator OnDoubleClick()
@@ -71,7 +68,6 @@ public class PlayerController : MonoBehaviour
         while (doubleClickTimer < 1.5f)
         {
             doubleClickTimer += Time.deltaTime;
-            //Debug.Log(doubleClickTimer + ", " + doubleClick);
             doubleClick = true;
             speedDoubled = true;
             yield return null;
@@ -106,10 +102,6 @@ public class PlayerController : MonoBehaviour
         while ((transform.position - destination).sqrMagnitude > 0.05f)
         {
             animator.SetBool("isRunning", true);
-
-            //if (doubleClick)
-            //    transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.deltaTime * 2);
-            //else
             transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.deltaTime);
             yield return true;
         }
@@ -120,10 +112,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //StopAllCoroutines();
-
-        //Debug.Log("collision w/ " + collision.gameObject.layer);
-
         if (collision.gameObject.layer == 10) //wall
         {
             StopAllCoroutines();
@@ -135,8 +123,6 @@ public class PlayerController : MonoBehaviour
                 doubleClickTimer = 0.0f;
             }
             animator.SetBool("isRunning", false);
-            //StopCoroutine(Click());
-            //StopCoroutine(MoveTo(transform.position, mouseInSpace, speed));
         }
         else if (collision.gameObject.layer == 11) //door
         {
