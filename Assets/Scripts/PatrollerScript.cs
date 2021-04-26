@@ -32,20 +32,20 @@ public class PatrollerScript : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(MoveTo());
 
-        if (spottedPlayer)
-        {
-            //this.Destination = player.transform.position;
-            //StopAllCoroutines();
-            //StartCoroutine(MoveToPlayer());
-            Debug.Log("spotted player");
-            StopAllCoroutines();
-            transform.position = Vector2.MoveTowards(
-                transform.position,
-                player.gameObject.transform.position,
-                //player.transform.position,
-                Speed * Time.deltaTime
-                );
-        }
+        //if (spottedPlayer)
+        //{
+        //    //this.Destination = player.transform.position;
+        //    //StopAllCoroutines();
+        //    //StartCoroutine(MoveToPlayer());
+        //    Debug.Log("spotted player");
+        //    StopAllCoroutines();
+        //    transform.position = Vector2.MoveTowards(
+        //        transform.position,
+        //        player.gameObject.transform.position,
+        //        //player.transform.position,
+        //        Speed * Time.deltaTime
+        //        );
+        //}
 
         //if ((transform.position - this.Destination).sqrMagnitude > 1.30f)
     }
@@ -69,17 +69,21 @@ public class PatrollerScript : MonoBehaviour
     {
         while ((transform.position - this.Destination).sqrMagnitude >  0.01f)
         {
-            //if (spottedPlayer)
-            //{
-            //    this.Destination = player.transform.position;
-            //}
+            if (spottedPlayer)
+            {
+                this.Destination = player.transform.position;
+                rightPOV.gameObject.SetActive(false);
+                leftPOV.gameObject.SetActive(false);
+                upPOV.gameObject.SetActive(false);
+                downPOV.gameObject.SetActive(false);
+            }
             transform.position = Vector2.MoveTowards(transform.position,
                 this.Destination, this.Speed * Time.deltaTime);
 
             float xDifference = this.Destination.x - transform.position.x;
             float yDifference = this.Destination.y - transform.position.y;
 
-            if (Math.Abs(xDifference) > Math.Abs(yDifference))
+            if ((Math.Abs(xDifference) > Math.Abs(yDifference)) && !spottedPlayer) 
             {
                 if (xDifference > 0)
                 {

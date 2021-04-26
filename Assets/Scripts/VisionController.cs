@@ -10,6 +10,7 @@ public class VisionController : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
+            Debug.Log("spotted player");
             patroller.spottedPlayer = true;
         }
     }
