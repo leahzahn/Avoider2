@@ -21,7 +21,6 @@ public class CameraFollow : MonoBehaviour
     {
         cameraHalfWidth = Camera.main.orthographicSize * Camera.main.aspect;
         cameraHalfHeight = Camera.main.orthographicSize; 
-        //cameraHalfHeight = Camera.main.pixelHeight * Camera.main.aspect;
 
     }
 

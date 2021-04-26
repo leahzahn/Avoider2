@@ -31,39 +31,7 @@ public class PatrollerScript : MonoBehaviour
     {
         StopAllCoroutines();
         StartCoroutine(MoveTo());
-
-        //if (spottedPlayer)
-        //{
-        //    //this.Destination = player.transform.position;
-        //    //StopAllCoroutines();
-        //    //StartCoroutine(MoveToPlayer());
-        //    Debug.Log("spotted player");
-        //    StopAllCoroutines();
-        //    transform.position = Vector2.MoveTowards(
-        //        transform.position,
-        //        player.gameObject.transform.position,
-        //        //player.transform.position,
-        //        Speed * Time.deltaTime
-        //        );
-        //}
-
-        //if ((transform.position - this.Destination).sqrMagnitude > 1.30f)
     }
-
-    //private bool CheckforPlayer()
-    //{
-    //    return ((this.transform.position - player.transform.position).sqrMagnitude < 7.0f);
-    //}
-
-    //IEnumerator MoveToPlayer()
-    //{
-    //    while ((transform.position - player.transform.position).sqrMagnitude > 0.01f)
-    //    {
-    //        transform.position = Vector2.MoveTowards(transform.position,
-    //            player.transform.position, this.Speed * Time.deltaTime);
-    //        yield return null;
-    //    }
-    //}
 
     IEnumerator MoveTo()
     {
@@ -87,7 +55,7 @@ public class PatrollerScript : MonoBehaviour
             {
                 if (xDifference > 0)
                 {
-                    rightPOV.gameObject.transform.position = new Vector3(this.transform.position.x + 0.75f, this.transform.position.y, 0);
+                    rightPOV.gameObject.transform.position = new Vector3(this.transform.position.x + 1.25f, this.transform.position.y, 0);
                     rightPOV.gameObject.SetActive(true);
                     leftPOV.gameObject.SetActive(false);
                     upPOV.gameObject.SetActive(false);
@@ -95,14 +63,14 @@ public class PatrollerScript : MonoBehaviour
                 }
                 else
                 {
-                    leftPOV.gameObject.transform.position = new Vector3(this.transform.position.x - 0.75f, this.transform.position.y, 0);
+                    leftPOV.gameObject.transform.position = new Vector3(this.transform.position.x - 1.25f, this.transform.position.y, 0);
                     leftPOV.gameObject.SetActive(true);
                     rightPOV.gameObject.SetActive(false);
                     upPOV.gameObject.SetActive(false);
                     downPOV.gameObject.SetActive(false);
                 }
             }
-            else
+            else if ((Math.Abs(xDifference) <= Math.Abs(yDifference)) && !spottedPlayer)
             {
                 if (yDifference > 0)
                 {

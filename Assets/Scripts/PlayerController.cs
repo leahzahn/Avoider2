@@ -38,8 +38,6 @@ public class PlayerController : MonoBehaviour
             {
                 StartCoroutine(OnDoubleClick());
             }
-            //StopCoroutine(Click());
-            //StopCoroutine(MoveTo(transform.position, mouseInSpace, speed));
 
             mouseInSpace = new Vector3(mouseInSpace.x, mouseInSpace.y, 0);
 
@@ -128,12 +126,10 @@ public class PlayerController : MonoBehaviour
         {
             if (hasKey)
             {
-                buttonController.OnGameQuitButtonClick();
+                buttonController.OnGameWin();
+
                 StopAllCoroutines();
             }
-            
-            Debug.Log("Door hit!");
-            
         }
         else if (collision.gameObject.layer == 9) //enemy
         {

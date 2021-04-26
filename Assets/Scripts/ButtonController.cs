@@ -11,6 +11,7 @@ public class ButtonController : MonoBehaviour
     public GameObject menuQuitButton;
     public GameObject menuBackground;
     public GameObject titleText;
+    public GameObject winText;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class ButtonController : MonoBehaviour
         player.gameObject.SetActive(false);
         gameQuitButton.gameObject.SetActive(false);
         keyText.gameObject.SetActive(false);
+        winText.gameObject.SetActive(false);
     }
 
     public void OnPlayButtonClick()
@@ -32,6 +34,7 @@ public class ButtonController : MonoBehaviour
         player.gameObject.SetActive(true);
         gameQuitButton.gameObject.SetActive(true);
         keyText.gameObject.SetActive(true);
+        winText.gameObject.SetActive(false);
     }
 
     public void OnMenuQuitButtonClick()
@@ -49,5 +52,18 @@ public class ButtonController : MonoBehaviour
         player.gameObject.SetActive(false);
         gameQuitButton.gameObject.SetActive(false);
         keyText.gameObject.SetActive(false);
+        winText.gameObject.SetActive(false);
+    }
+
+    public void OnGameWin()
+    {
+        titleText.gameObject.SetActive(true);
+        playButton.gameObject.SetActive(true);
+        menuQuitButton.gameObject.SetActive(true);
+        menuBackground.gameObject.SetActive(true);
+        player.gameObject.SetActive(false);
+        gameQuitButton.gameObject.SetActive(false);
+        keyText.gameObject.SetActive(false);
+        winText.gameObject.SetActive(true);
     }
 }
